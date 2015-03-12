@@ -22,7 +22,7 @@ Debug.Assert(c == 'p');
 Converts an IntPtr to an object.
 ```
 // ptr from previous example
-string s = UnsafeOperations.IntPtrToObject(ptr);
+string s = UnsafeOperations.IntPtrToObject<string>(ptr);
 Debug.Assert(s == "p");
 ```
 Warning: Method calls can crash runtime if type is mismatched.

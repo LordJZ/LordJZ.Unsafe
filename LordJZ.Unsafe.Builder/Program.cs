@@ -39,7 +39,18 @@ namespace LordJZ.Unsafe.Builder
                     fields.RemoveAt(i--);
             }
 
-            FixRefToIntPtr(t.Methods.Single(md => md.Name == "ReferenceToIntPtr"));
+            foreach (MethodDefinition m in t.Methods)
+            {
+                switch (m.Name)
+                {
+                    case "ReferenceToIntPtr":
+                    case "ObjectToIntPtr":
+                    case "IntPtrToObject":
+                    case "Cast":
+                        MakeLdarg0(m);
+                        break;
+                }
+            }
 
             string backup = location + ".original";
             File.Delete(backup);
@@ -47,7 +58,7 @@ namespace LordJZ.Unsafe.Builder
             a.Write(location);
         }
 
-        static void FixRefToIntPtr(MethodDefinition m)
+        static void MakeLdarg0(MethodDefinition m)
         {
             Collection<Instruction> insns = m.Body.Instructions;
             insns.Clear();

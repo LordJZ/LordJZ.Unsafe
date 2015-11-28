@@ -28,7 +28,7 @@ namespace LordJZ.Unsafe
         /// Type of the reference parameter.
         /// </typeparam>
         /// <param name="value">
-        /// The reference parameter to be converted to  an<see cref="IntPtr"/>
+        /// The reference parameter to be converted to an <see cref="IntPtr"/>.
         /// </param>
         /// <returns>
         /// The chip representation of the reference as an <see cref="IntPtr"/>.
